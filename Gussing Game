@@ -1,0 +1,37 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+    srand(time(NULL)); // Seed the random number generator
+
+    int secretNumber = rand() % 50 + 1; // Generate a random number between 1 and 50
+    int attempts = 0;
+    int maxAttempts = 5; // The maximum number of attempts
+
+    printf("Welcome to the Guessing Game!\n");
+    printf("I've picked a number between 1 and 50. Try to guess it!\n");
+
+    while (attempts < maxAttempts) {
+        int guess;
+        printf("Enter your guess: ");
+        scanf("%d", &guess);
+        attempts++;
+
+        if (guess == secretNumber) {
+            printf("Congratulations! You've guessed the number in %d attempts!\n", attempts);
+            break;
+        } else if (guess < secretNumber) {
+            printf("Try a higher number.\n");
+        } else {
+            printf("Try a lower number.\n");
+        }
+    }
+
+    if (attempts == maxAttempts) {
+        printf("Sorry, you've used all your attempts. The number was: %d\n", secretNumber);
+    }
+
+    return 0;
+}
